@@ -55,16 +55,14 @@ module.exports = {
       "@semantic-release/exec",
       {
         publishCmd: `
-          zip amplitude-unreal.zip Source
-          zip amplitude-unreal.zip Resources
-          zip amplitude-unreal.zip Amplitude.uplugin
+          zip -vr AmplitudeUnreal.zip Source Amplitude.uplugin Resources
         `,
       },
     ],
     [
       "@semantic-release/github",
       {
-        assets: [{ path: "amplitude-unreal.zip" }],
+        assets: [{ path: "AmplitudeUnreal.zip" }],
       },
     ],
   ],
