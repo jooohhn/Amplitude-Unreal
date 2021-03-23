@@ -51,6 +51,21 @@ module.exports = {
           "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
       },
     ],
-    "@semantic-release/github",
+    [
+      "@semantic-release/exec",
+      {
+        publishCmd: `
+          zip amplitude-unreal.zip Source
+          zip amplitude-unreal.zip Resources
+          zip amplitude-unreal.zip Amplitude.uplugin
+        `,
+      },
+    ],
+    [
+      "@semantic-release/github",
+      {
+        assets: [{ path: "amplitude-unreal.zip" }],
+      },
+    ],
   ],
 };
